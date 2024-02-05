@@ -1,3 +1,3 @@
 # **NOTICE**
 
-If you are messing with the code or are doing new concepts entirely that might break it, **make a branch** of it.
+This branch is a long term goal if we go this route. I (Aman) am going to take a go at learning some TensorFlow and see if I can make anything happen.
