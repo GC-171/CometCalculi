@@ -3,7 +3,6 @@ import pandas as pd
 
 df = pd.read_csv(r"C:\Users\rsen4\OneDrive\Desktop\Wharton Stuff\Data\NSL_Regular_Season_Data - NSL_Season_Data.csv")
 
-# Initialize teams with starting ratings
 TeamsTemp = [
     'PRO', 'FOR', 'SJU', 'FAR', 'DOV', 'ALB', 'SAS', 'CHM', 'TOL', 'REN',
     'SFS', 'TUC', 'LRO', 'ANC', 'WIC', 'LAR', 'LEX', 'TAC', 'DES', 'BAK',
@@ -29,7 +28,6 @@ def EloRating(Ra, Rb, K, d):
         Rb = Rb + K * (1 - Pb)
     return Ra, Rb
 
-# Update Elo ratings for each match
 for i in range(len(df)):
     home_team = HomeTeam[i]
     away_team = AwayTeam[i]
@@ -48,13 +46,10 @@ for i in range(len(df)):
     Teams[home_team]['EloRating'] = Ra
     Teams[away_team]['EloRating'] = Rb
 
-# Convert dictionary to DataFrame
 df_elo = pd.DataFrame.from_dict(Teams, orient='index')
 
-# Reset index to get 'Team' as a column
 df_elo.reset_index(inplace=True)
 df_elo.rename(columns={'index': 'Team'}, inplace=True)
 
-# Save to CSV
 df_elo.to_csv(r"C:\Users\rsen4\OneDrive\Desktop\Wharton Stuff\Data\Elos.csv", index=False)
 
