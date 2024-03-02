@@ -9,8 +9,12 @@ def main():
     write_updated_data(csv_file_path, updated_data)
 
 def update_csv_data(csv_file_path):
-    HomeTeam = ANC
-    AwayTeam = LEX
+
+    HomeTeam = EUG
+    HomeTeamName = 'EUG'
+
+    AwayTeam = SJU
+    AwayTeamName = 'SJU'
 
     match_data = calculate_match_averages(HomeTeam, AwayTeam)
 
@@ -18,7 +22,7 @@ def update_csv_data(csv_file_path):
     with open(csv_file_path, 'r', newline='') as file:
         reader = csv.DictReader(file)
         for row in reader:
-            if row['HomeTeam'] == 'ANC' and row['AwayTeam'] == 'LEX':
+            if row['HomeTeam'] == HomeTeamName and row['AwayTeam'] == AwayTeamName:
                 row['Home_xG'] = match_data['match_home_xG']
                 row['Away_xG'] = match_data['match_away_xG']
                 row['Home_shots'] = match_data['match_home_shots']
